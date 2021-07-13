@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+.wrapperLinks {
+  display: flex;
+
+  justify-content: center;
+
+  a {
+    font-size: 2rem;
+    margin: 1rem;
+    text-decoration: none;
+  }
+}
+
+.activeNavLink {
+  color: cadetblue;
+}
+
+.wrapperOpinion {
+  .ulMenuOpinion {
+    display: flex;
+    justify-content: center;
+
+    .liItemMenuOpinion {
+      font-size: 2.1rem;
+      margin: 1rem;
+    }
+  }
+
+  .js-btn {
+    display: block;
+    width: 10rem;
+    font-size: 2rem;
+    margin: 1rem auto;
+    padding: 1rem 1.5rem;
+  }
+
+  .titleInfoOpinion {
+    font-size: 2.5rem;
+    margin-top: 5rem;
+    text-align: center;
+  }
+}
+
+.inputFormName {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  input {
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+  }
+
+  button {
+    margin-left: 1rem;
+    width: 5rem;
+  }
+}
+
+.wrapperToDoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 35rem;
+  margin: 1rem auto;
+  background-color: cadetblue;
+  padding: 1rem;
+  border: 1px solid #333;
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  input {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+  }
+
+  .checkboxItem {
+    width: 15rem;
+    display: flex;
+    align-items: center;
+  }
+}
