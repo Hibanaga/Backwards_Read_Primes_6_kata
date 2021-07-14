@@ -1,31 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
 
-const Feedback = ({ store }) => {
-  let { feedback } = store.getState();
-
-  let [good, setGood] = useState(feedback.good);
-  let [medium, setMedium] = useState(feedback.medium);
-  let [bad, setBad] = useState(feedback.bad);
-
-  let handleGoodOpinion = () => {
-    store.dispatch({ type: "addGoodOpinion" });
-  };
-
-  let handleMediumOpinion = () => {
-    store.dispatch({ type: "addMediumOpinion" });
-  };
-
-  let handleBadOpinion = () => {
-    store.dispatch({ type: "addBadOpinion" });
-  };
-
-  store.subscribe(() => {
-    let { feedback } = store.getState();
-    let { good, medium, bad } = feedback;
-    setGood(good);
-    setMedium(medium);
-    setBad(bad);
-  });
+const Feedback = ({
+  good,
+  medium,
+  bad,
+  onHandleGoodOpinion,
+  onHnadleMediumOpinion,
+  ohHandleBadOpinion,
+}) => {
+  let sumOpinion = good + medium + bad;
 
   return (
     <div className="wrapperOpinion">
@@ -34,28 +18,40 @@ const Feedback = ({ store }) => {
         <li className="liItemMenuOpinion">medium:{medium}</li>
         <li className="liItemMenuOpinion">bad:{bad}</li>
       </ul>
-
-      <button className="js-btn" onClick={handleGoodOpinion}>
+      <button className="js-btn" onClick={onHandleGoodOpinion}>
         good
       </button>
-      <button className="js-btn" onClick={handleMediumOpinion}>
+      <button className="js-btn" onClick={onHnadleMediumOpinion}>
         medium
       </button>
-      <button className="js-btn" onClick={handleBadOpinion}>
+      <button className="js-btn" onClick={ohHandleBadOpinion}>
         bad
       </button>
 
-      {good + medium + bad > 0 && (
+      {sumOpinion > 0 ? (
         <>
-          {" "}
           <h2 className="titleInfoOpinion">
-            percent of positive opinion:{" "}
-            {(good / (good + medium + bad)).toFixed(2) * 100}%
-          </h2>{" "}
+            percentage of positive opinion:{" "}
+            {((good / sumOpinion) * 100).toFixed(2)}
+          </h2>
         </>
+      ) : (
+        <></>
       )}
     </div>
   );
 };
 
-export default Feedback;
+const mapStateToProps = (state) => ({
+  good: state.feedback.good,
+  medium: state.feedback.medium,
+  bad: state.feedback.bad,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onHandleGoodOpinion: () => dispatch({ type: "addGoodOpinion" }),
+  onHnadleMediumOpinion: () => dispatch({ type: "addMediumOpinion" }),
+  ohHandleBadOpinion: () => dispatch({ type: "addBadOpinion" }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Feedback);

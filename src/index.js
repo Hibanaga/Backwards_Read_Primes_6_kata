@@ -5,6 +5,7 @@ import { createStore } from "redux";
 import reducers from "./store/todosReducer";
 import "./style.scss";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 
 const store = createStore(
   reducers,
@@ -12,8 +13,10 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App store={store} />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );

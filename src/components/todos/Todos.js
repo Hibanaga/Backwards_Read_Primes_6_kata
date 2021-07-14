@@ -1,60 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import ToDoItem from "./Components/ToDoItem";
 
-const Todos = ({ store }) => {
-  let { todos } = store.getState();
-  const [todo, setTodo] = useState(todos);
-  const [todosText, setTodosText] = useState("");
-
-  let handleChangeInput = (event) => {
-    setTodosText(event.target.value);
-  };
-
-  let handleSubmitTodos = (event) => {
+const Todos = ({
+  todos,
+  onHandleAddTodos,
+  onHandleDeleteTodos,
+  onToggleHandleCheckbox,
+}) => {
+  const [todoText, setTodoText] = useState("");
+  const handleSubmitTodos = (event) => {
     event.preventDefault();
-    let itemTODO = { id: uuidv4(), nameToDo: todosText, completed: false };
-
-    store.dispatch({
-      type: "addTODOs",
-      newTodos: itemTODO,
-    });
+    onHandleAddTodos({ id: uuidv4(), text: todoText, completed: false });
   };
 
-  let handleDeleteTodos = (taskID) => {
-    store.dispatch({ type: "removeSelectTODOs", currentID: taskID });
+  const handleTodosText = (event) => {
+    setTodoText(event.target.value);
   };
 
-  let handleToggleCheckedTodos = (taskID) => {
-    store.dispatch({
-      type: "toggleSelectTODOs",
-      taskID: taskID,
-    });
+  const handleToggleCheckedTodos = (taskID) => {
+    onToggleHandleCheckbox(taskID);
   };
 
-  useEffect(() => {
-    return () => {
-      setTodo([]);
-    };
-  }, []);
-
-  store.subscribe(() => {
-    let { todos } = store.getState();
-    setTodo(todos);
-  });
+  const handleDeleteTodos = (taskID) => {
+    onHandleDeleteTodos(taskID);
+  };
 
   return (
     <div>
       <form action="" className="inputFormName" onSubmit={handleSubmitTodos}>
-        <input type="text" value={todosText} onChange={handleChangeInput} />
+        <input type="text" value={todoText} onChange={handleTodosText} />
         <button type="submit">send</button>
       </form>
 
-      {todo.map(({ id, nameToDo, completed }) => (
+      {todos.map(({ id, text, completed }) => (
         <ToDoItem
           key={id}
           id={id}
-          name={nameToDo}
+          name={text}
           completed={completed}
           onHandleToggleCheckedTodos={handleToggleCheckedTodos}
           onHandleDeleteTodos={handleDeleteTodos}
@@ -64,4 +48,16 @@ const Todos = ({ store }) => {
   );
 };
 
-export default Todos;
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onHandleAddTodos: (todo) => dispatch({ type: "addTODOs", newTodos: todo }),
+  onHandleDeleteTodos: (taskID) =>
+    dispatch({ type: "removeSelectTODOs", currentID: taskID }),
+  onToggleHandleCheckbox: (taskID) =>
+    dispatch({ type: "toggleSelectTODOs", taskID: taskID }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todos);
