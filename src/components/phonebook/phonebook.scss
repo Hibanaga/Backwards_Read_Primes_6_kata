@@ -1,0 +1,108 @@
+.wrapperPhonebook {
+  width: 114rem;
+  margin: 3% auto;
+}
+
+.rowPhoneBook {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapperContactForm {
+  width: 45%;
+
+  .titleContactForm {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+  }
+
+  .labelContactForm {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    // width: 80%;
+    margin: 3% auto;
+
+    font-size: 2.5rem;
+
+    input {
+      padding: 0.5rem 1rem;
+      font-size: 2rem;
+      border-radius: 5px;
+      outline: none;
+      border-color: cadetblue;
+    }
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 2rem;
+    margin-left: auto;
+    display: block;
+  }
+}
+
+.wrapperContactList {
+  width: 50%;
+
+  .titleContactList {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+  }
+}
+
+.wrapperContactItem {
+  width: 80%;
+  margin: 2rem auto;
+  border: 1px solid cadetblue;
+  position: relative;
+
+  .titleNameContact {
+    font-size: 2.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .descriptionNumberContact {
+    font-size: 2rem;
+    padding: 1rem 2rem;
+  }
+
+  .js-btn-deleteContact {
+    position: absolute;
+    right: 3%;
+    top: 35%;
+    padding-top: 0.1rem;
+    width: 2rem;
+    height: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.labelFilter {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+
+  font-size: 2rem;
+  text-transform: uppercase;
+
+  input {
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+  }
+}

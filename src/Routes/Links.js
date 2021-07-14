@@ -13,6 +13,10 @@ const Links = () => {
       <NavLink to="/todos" activeClassName="activeNavLink">
         Todo
       </NavLink>
+
+      <NavLink to="/phonebook" activeClassName="activeNavLink">
+        Phonebook
+      </NavLink>
     </div>
   );
 };
