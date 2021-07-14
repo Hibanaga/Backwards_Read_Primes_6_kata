@@ -19,6 +19,9 @@ const Links = () => {
       <NavLink to="/phonebook" activeClassName="activeNavLink">
         Phonebook
       </NavLink>
+      <NavLink to="/imageGallery" activeClassName="activeNavLink">
+        Gallery
+      </NavLink>
     </div>
   );
 };
