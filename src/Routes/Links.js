@@ -7,13 +7,15 @@ const Links = () => {
       <NavLink to="/" exact activeClassName="activeNavLink">
         Home
       </NavLink>
+      <NavLink to="/increment" activeClassName="activeNavLink">
+        Increment
+      </NavLink>
       <NavLink to="/feedback" activeClassName="activeNavLink">
         Feedback
       </NavLink>
       <NavLink to="/todos" activeClassName="activeNavLink">
         Todo
       </NavLink>
-
       <NavLink to="/phonebook" activeClassName="activeNavLink">
         Phonebook
       </NavLink>
