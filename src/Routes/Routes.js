@@ -5,10 +5,12 @@ import { Route } from "react-router-dom";
 import PhoneBook from "../components/phonebook/PhoneBook";
 import Increment from "../components/Increment/Increment";
 import ImageGallery from "../components/imageGallery/ImageGallery";
+import Home from "../components/Home/Home";
 
 const Routes = () => {
   return (
     <div>
+      <Route path="/" exact component={Home} />
       <Route path="/increment" exact component={Increment} />
       <Route path="/feedback" exact component={Feedback} />
       <Route path="/todos" exact component={Todos} />

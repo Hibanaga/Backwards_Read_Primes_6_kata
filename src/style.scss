@@ -95,3 +95,23 @@ li {
     align-items: center;
   }
 }
+
+.wrapperHome {
+  h2 {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-top: 4%;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+
+    li {
+      margin: 1rem auto;
+      font-size: 2rem;
+    }
+  }
+}
